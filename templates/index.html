@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>z3nai.com | Data, Cloud, and Digital Consultancy for American Enterprise</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='dist/css/output.css')}}">
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="border-gray-100 px-2 sm:px-4 py-2.5 dark:bg-gray-900">
+        <div class="container flex flex-wrap justify-between items-center mx-auto">
+            <a href="/" class="flex items-center" tabindex="1">
+                <img src="{{url_for('static',filename='dist/images/z3nai_blue.png')}}"
+                    class="mr-3 h-16 max-h-16 sm:h-16 sm:max-h-16 dark:hidden block" alt="z3nai Logo">
+                <img src="{{url_for('static',filename='dist/images/z3nai_blue.png')}}"
+                    class="mr-3 h-16 max-h-16 sm:h-16 sm:max-h-16 hidden dark:block" alt="z3nai Logo">
+                <span class="self-center text-5xl font-extrabold whitespace-nowrap dark:text-sky-500 text-blue-500">
+                    <span class="text-gray-700 dark:text-gray-200">Z3N</span>AI
+                    <span class="block text-sm font-normal text-gray-500 dark:text-gray-200">
+                        Data, Cloud, Applications, and AI Consultancy
+                    </span>
+                </span>
+            </a>
+            <div class="flex md:order-2 items-center">
+                <!-- Theme Toggle Button -->
+                <button onclick="toggleDarkMode()" data-tooltip-target="toggleTheme"
+                    class="mr-4 p-2 text-gray-500 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:focus:ring-gray-600"
+                    aria-label="Toggle Theme" tabindex="2">
+                    <i id="theme-icon" class="fa-solid fa-moon text-xl"></i>
+                </button>
+                <button data-collapse-toggle="navbar-cta" type="button"
+                    class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                    aria-controls="navbar-cta" aria-expanded="false" aria-label="Toggle navigation" tabindex="3">
+                    <span class="sr-only">Open main menu</span>
+                    <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                </button>
+                <div id="toggleTheme" role="tooltip"
+                    class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                    Switch Light/Dark Theme
+                    <div class="tooltip-arrow" data-popper-arrow></div>
+                </div>
+            </div>
+            <div class="hidden justify-between items-center w-full md:flex md:w-auto md:order-1" id="navbar-cta">
+                <ul
+                    class="flex flex-col p-4 mt-4 bg-gray-50 rounded-lg border border-gray-100 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                    <li><a href="#competencies"
+                            class="text-lg font-semibold block py-2 pr-4 pl-3 text-gray-700 dark:text-gray-400 hover:text-blue-600 hover:underline"
+                            tabindex="4">Competencies</a>
+                    </li>
+                    <li><a href="#catalog"
+                            class="text-lg font-semibold block py-2 pr-4 pl-3 text-gray-700 dark:text-gray-400 hover:text-blue-600 hover:underline"
+                            tabindex="5">Products</a>
+                    </li>
+                    <li><a href="#team"
+                            class="text-lg font-semibold block py-2 pr-4 pl-3 text-gray-700 dark:text-gray-400 hover:text-blue-600 hover:underline"
+                            tabindex="6">Team</a>
+                    </li>
+                    <li><a href="#engage"
+                            class="text-lg font-semibold block py-2 pr-4 pl-3 text-gray-700 dark:text-gray-400 hover:text-blue-600 hover:underline"
+                            tabindex="7">Engage</a>
+                    </li>
+                    <li><a href="#jobs"
+                            class="text-lg font-semibold block py-2 pr-4 pl-3 text-gray-700 dark:text-gray-400 hover:text-blue-600 hover:underline"
+                            tabindex="8">Careers</a>
+                    </li>
+                    <li><a href="#contact"
+                            class="text-lg font-semibold block py-2 pr-4 pl-3 text-gray-700 dark:text-gray-400 hover:text-blue-600 hover:underline"
+                            tabindex="9">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        // Function to toggle dark mode and save preference to local storage
+        function toggleDarkMode() {
+            const html = document.documentElement;
+            const themeIcon = document.getElementById('theme-icon');
+            html.classList.toggle('dark');
+            if (html.classList.contains('dark')) {
+                localStorage.setItem('theme', 'dark');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            } else {
+                localStorage.setItem('theme', 'light');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            }
+        }
+
+        // Function to load theme from local storage
+        function loadTheme() {
+            const theme = localStorage.getItem('theme');
+            const html = document.documentElement;
+            const themeIcon = document.getElementById('theme-icon');
+            if (theme === 'dark') {
+                html.classList.add('dark');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            } else {
+                html.classList.remove('dark');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            }
+        }
+
+        // Load theme on page load
+        document.addEventListener('DOMContentLoaded', loadTheme);
+    </script>
+
+    <!-- Hero Section with New Background Image/Video -->
+    <header class="relative bg-cover bg-center" id="hero"
+        style="background-image: url('{{url_for('static', filename='dist/images/fedflag.jpg')}}'); height: 72vh;">
+        <!-- Darker overlay with 0.75 opacity -->
+        <div class="absolute inset-0 bg-gray-900 opacity-75"></div>
+        <div class="relative z-10 flex flex-col items-center justify-center text-center h-full">
+            <h1 class="text-6xl font-extrabold text-white">Z3N<span class="text-blue-500">AI</span></h1>
+            <p class="mt-4 text-3xl sm:text-3xl text-gray-100">
+                <span class="font-extrabold">Transformative</span> <span
+                    class="text-blue-500 font-semibold">Data</span>, <span
+                    class="text-blue-500 font-semibold">Cloud</span>,
+                <span class="text-blue-500 font-semibold">Analytics</span>, and <span
+                    class="text-blue-500 font-semibold">AI</span><br />
+                Solutions for the Federal Enterprise
+            </p>
+            <a href="#contact"
+                class="mt-8 inline-block bg-blue-500 text-white font-semibold py-3 px-8 rounded-lg hover:bg-blue-600">
+                Contact &nbsp; <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </div>
+    </header>
+
+    <!-- Competencies Section -->
+    <section id="competencies"
+        class="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-5xl font-extrabold text-left text-gray-900 dark:text-white mb-8">
+                Key <span class="text-blue-500">Competencies</span>
+            </h2>
+            <div class="grid grid-cols-1 lg:grid-cols-12 items-start justify-between gap-8 mb-12">
+                <p
+                    class="mt-4 text-lg text-left text-gray-600 dark:text-gray-300 lg:col-span-9 md:col-span-9 sm:col-span-12">
+                    Critical competencies in the areas of digital experience, cloud, data, ai, analytics, apps, and
+                    cybersecurity
+                </p>
+                <div class="flex lg:justify-end sm:justify-start lg:col-span-3 md:col-span-3 sm:col-span-12">
+                    <a href="#contact"><button
+                            class="mt-8 bg-blue-500 text-white font-semibold py-3 px-8 rounded-lg hover:bg-blue-600 flex items-center justify-center">
+                            Consult &nbsp; <i class="fa-solid fa-arrow-right ml-2"></i>
+                        </button></a>
+                </div>
+            </div>
+            <div class="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+
+                <!-- Machine Learning Card -->
+                <div
+                    class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md dark:shadow-lg hover:shadow-xl transition border border-gray-200 dark:border-gray-600">
+                    <h3 class="text-3xl font-semibold text-center text-blue-500">Machine Learning</h3>
+                    <hr class="my-3 border-dashed border-gray-500">
+                    <p class="text-gray-700 dark:text-gray-200">Driving actionable insights, automation, and efficiency
+                        with advanced ML capabilities.</p>
+                    <ul class="mt-4 space-y-3">
+                        <li class="flex items-start bg-gray-100 dark:bg-gray-600 p-3 rounded-md">
+                            <span class="text-sky-400 mr-3"><i class="fas fa-chart-line"></i></span>
+                            <div><strong class="text-blue-500 dark:text-sky-500">Predictive Algorithms</strong><br />
+                                Models to forecast trends,
+                                optimize decisions, and enhance strategy.</div>
+                        </li>
+                        <li class="flex items-start bg-gray-100 dark:bg-gray-600 p-3 rounded-md">
+                            <span class="text-sky-400 mr-3"><i class="fas fa-search"></i></span>
+                            <div><strong class="text-blue-500 dark:text-sky-500">NLP and Search</strong><br />
+                                Interprets
+                                human language for responsive and relevant customer interactions.</div>
+                        </li>
+                        <li class="flex items-start bg-gray-100 dark:bg-gray-600 p-3 rounded-md">
+                            <span class="text-sky-400 mr-3"><i class="fas fa-cogs"></i></span>
+                            <div><strong class="text-blue-500 dark:text-sky-500">Optimization Models</strong><br />
+                                Efficiency-driven models for
+                                cost reduction and resource optimization.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Artificial Intelligence Card -->
+                <div
+                    class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md dark:shadow-lg hover:shadow-xl transition border border-gray-200 dark:border-gray-600">
+                    <h3 class="text-3xl font-semibold text-center text-blue-500">Artificial Intelligence</h3>
+                    <hr class="my-3 border-dashed border-gray-500">
+                    <p class="text-gray-700 dark:text-gray-200">Transformative AI solutions for secure, enterprise-grade
+                        outcomes.</p>
+                    <ul class="mt-4 space-y-3">
+                        <li class="flex items-start bg-gray-100 dark:bg-gray-600 p-3 rounded-md">
+                            <span class="text-sky-400 mr-3"><i class="fas fa-brain"></i></span>
+                            <div><strong class="text-blue-500 dark:text-sky-500">Sensory AI</strong><br /> Advanced
+                                machine inference with
+                                visual, speech, language, and cognitive signals.</div>
+                        </li>
+                        <li class="flex items-start bg-gray-100 dark:bg-gray-600 p-3 rounded-md">
+                            <span class="text-sky-400 mr-3"><i class="fas fa-shield-alt"></i></span>
+                            <div><strong class="text-blue-500 dark:text-sky-500">Secure ChatGPT Services</strong><br />
+                                Secure, leakage free
+                                generative AI services inside private environments.</div>
+                        </li>
+                        <li class="flex items-start bg-gray-100 dark:bg-gray-600 p-3 rounded-md">
+                            <span class="text-sky-400 mr-3"><i class="fas fa-users"></i></span>
+                            <div><strong class="text-blue-500 dark:text-sky-500">Mixed Intelligence Crews</strong><br />
+                                Blending human and Agentic AI
+                                workforce for high-impact workflows.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Cybersecurity Card -->
+                <div
+                    class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md dark:shadow-lg hover:shadow-xl transition border border-gray-200 dark:border-gray-600">
+                    <h3 class="text-3xl font-semibold text-center text-blue-500">Cybersecurity</h3>
+                    <hr class="my-3 border-dashed border-gray-500">
+                    <p class="text-gray-700 dark:text-gray-200">Ensuring data integrity, compliance, and protection with
+                        advanced security solutions.</p>
+                    <ul class="mt-4 space-y-3">
+                        <li class="flex items-start bg-gray-100 dark:bg-gray-600 p-3 rounded-md">
+                            <span class="text-sky-400 mr-3"><i class="fas fa-shield-alt"></i></span>
+                            <div><strong class="text-blue-500 dark:text-sky-500">Threat Detection &
+                                    Response</strong><br /> Real-time threat
+                                management solutions.</div>
+                        </li>
+                        <li class="flex items-start bg-gray-100 dark:bg-gray-600 p-3 rounded-md">
+                            <span class="text-sky-400 mr-3"><i class="fas fa-check-circle"></i></span>
+                            <div><strong class="text-blue-500 dark:text-sky-500">Compliance & Risk
+                                    Management</strong><br /> Adherence to
+                                Strict FedRAMP, FISMA standards.</div>
+                        </li>
+                        <li class="flex items-start bg-gray-100 dark:bg-gray-600 p-3 rounded-md">
+                            <span class="text-sky-400 mr-3"><i class="fas fa-user-shield"></i></span>
+                            <div><strong class="text-blue-500 dark:text-sky-500">Identity & Access Management
+                                    (IAM)</strong><br /> Secure access
+                                through advanced IAM strategies.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Cloud Solutions Card -->
+                <div
+                    class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md dark:shadow-lg hover:shadow-xl transition border border-gray-200 dark:border-gray-600">
+                    <h3 class="text-3xl font-semibold text-center text-blue-500">Cloud Adoption</h3>
+                    <hr class="my-3 border-dashed border-gray-500">
+                    <p class="text-gray-700 dark:text-gray-200">Modern cloud solutions for scalable infrastructure and
+                        enhanced security.</p>
+                    <ul class="mt-4 space-y-3">
+                        <li class="flex items-start bg-gray-100 dark:bg-gray-600 p-3 rounded-md">
+                            <span class="text-sky-400 mr-3"><i class="fas fa-cloud-upload-alt"></i></span>
+                            <div><strong class="text-blue-500 dark:text-sky-500">Lift-and-Shift
+                                    Transformations</strong><br /> Cloud migration
+                                for better scalability and efficiency.</div>
+                        </li>
+                        <li class="flex items-start bg-gray-100 dark:bg-gray-600 p-3 rounded-md">
+                            <span class="text-sky-400 mr-3"><i class="fas fa-box"></i></span>
+                            <div><strong class="text-blue-500 dark:text-sky-500">Managed Services &
+                                    Containerization</strong><br /> Resilient,
+                                flexible cloud-native applications.</div>
+                        </li>
+                        <li class="flex items-start bg-gray-100 dark:bg-gray-600 p-3 rounded-md">
+                            <span class="text-sky-400 mr-3"><i class="fas fa-server"></i></span>
+                            <div><strong class="text-blue-500 dark:text-sky-500">IaaS, PaaS, SaaS
+                                    Solutions</strong><br /> Secure infrastructure
+                                and software services.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Applications Card -->
+                <div
+                    class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md dark:shadow-lg hover:shadow-xl transition border border-gray-200 dark:border-gray-600">
+                    <h3 class="text-3xl font-semibold text-center text-blue-500">Applications</h3>
+                    <hr class="my-3 border-dashed border-gray-500">
+                    <p class="text-gray-700 dark:text-gray-200">High-performance mobile and web applications for
+                        consistent experiences.</p>
+                    <ul class="mt-4 space-y-3">
+                        <li class="flex items-start bg-gray-100 dark:bg-gray-600 p-3 rounded-md">
+                            <span class="text-sky-400 mr-3"><i class="fas fa-mobile-alt"></i></span>
+                            <div><strong class="text-blue-500 dark:text-sky-500">Mobile-First Development</strong><br />
+                                Prioritizing mobile
+                                design for accessibility.</div>
+                        </li>
+                        <li class="flex items-start bg-gray-100 dark:bg-gray-600 p-3 rounded-md">
+                            <span class="text-sky-400 mr-3"><i class="fas fa-network-wired"></i></span>
+                            <div><strong class="text-blue-500 dark:text-sky-500">Enterprise & Web
+                                    Integration</strong><br /> Cohesive
+                                applications for efficient workflows.</div>
+                        </li>
+                        <li class="flex items-start bg-gray-100 dark:bg-gray-600 p-3 rounded-md">
+                            <span class="text-sky-400 mr-3"><i class="fas fa-users"></i></span>
+                            <div><strong class="text-blue-500 dark:text-sky-500">User-Centric Design</strong><br />
+                                Intuitive cross-platform
+                                functionality for user engagement.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Data Solutions Card -->
+                <div
+                    class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md dark:shadow-lg hover:shadow-xl transition border border-gray-200 dark:border-gray-600">
+                    <h3 class="text-3xl font-semibold text-center text-blue-500">Data Solutions</h3>
+                    <hr class="my-3 border-dashed border-gray-500">
+                    <p class="text-gray-700 dark:text-gray-200">Data-driven decision-making through real-time analytics
+                        and governance.</p>
+                    <ul class="mt-4 space-y-3">
+                        <li class="flex items-start bg-gray-100 dark:bg-gray-600 p-3 rounded-md">
+                            <span class="text-sky-400 mr-3"><i class="fas fa-database"></i></span>
+                            <div><strong class="text-blue-500 dark:text-sky-500">Data Lakehouses</strong><br /> Hybrid
+                                data architectures for
+                                real-time and historical analytics.</div>
+                        </li>
+                        <li class="flex items-start bg-gray-100 dark:bg-gray-600 p-3 rounded-md">
+                            <span class="text-sky-400 mr-3"><i class="fas fa-lock"></i></span>
+                            <div><strong class="text-blue-500 dark:text-sky-500">Data Governance</strong><br />
+                                Frameworks ensuring data
+                                quality, security, and compliance.</div>
+                        </li>
+                        <li class="flex items-start bg-gray-100 dark:bg-gray-600 p-3 rounded-md">
+                            <span class="text-sky-400 mr-3"><i class="fas fa-chart-line"></i></span>
+                            <div><strong class="text-blue-500 dark:text-sky-500">DataOps</strong><br /> Agile practices
+                                to maximize data
+                                potential with a DataOps culture.</div>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Masonry Video Catalog Section -->
+    <section id="catalog" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-100 dark:bg-gray-800 dark:text-gray-100">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-5xl font-extrabold text-left text-gray-900 dark:text-white mb-8">
+                Our <span class="text-blue-500">Products</span>
+            </h2>
+            <div class="grid grid-cols-1 lg:grid-cols-12 items-start justify-between gap-8 mb-12">
+                <p
+                    class="mt-4 text-lg text-left text-gray-600 dark:text-gray-300 lg:col-span-9 md:col-span-9 sm:col-span-12">
+                    We build custom-tailored AI, ML, Data, Cloud, and Mobile products for the American enterprise.
+                    Contact us for a virtual meeting.
+                </p>
+                <div class="flex lg:justify-end sm:justify-start lg:col-span-3 md:col-span-3 sm:col-span-12">
+                    <a href="#contact"><button
+                            class="mt-8 bg-blue-500 text-white font-semibold py-3 px-8 rounded-lg hover:bg-blue-600 flex items-center justify-center">
+                            Request a Demo &nbsp; <i class="fa-solid fa-arrow-right ml-2"></i>
+                        </button></a>
+                </div>
+            </div>
+
+            <!-- Symmetric Grid for Cards -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
+
+                <!-- Cataloging AI (Quill) -->
+                <div
+                    class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-md hover:shadow-lg transition h-full flex flex-col justify-between">
+                    <video controls poster="https://via.placeholder.com/300x200?text=Quill+Preview"
+                        class="w-full h-40 rounded-md mb-4">
+                        <source src="{{url_for('static', filename='dist/videos/quill.mp4')}}" type="video/mp4">
+                    </video>
+                    <h3 class="text-xl font-semibold text-blue-500 dark:text-sky-500 text-center">Cataloging AI (Quill)
+                    </h3>
+                    <p class="text-gray-700 dark:text-gray-300 mt-2">Automated cataloging assistant powered by AI for
+                        seamless data warehouse organization and retrieval.</p>
+                </div>
+
+                <!-- Meeting AI (Huddle) -->
+                <div
+                    class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-md hover:shadow-lg transition h-full flex flex-col justify-between">
+                    <video controls poster="https://via.placeholder.com/300x200?text=Huddle+Preview"
+                        class="w-full h-40 rounded-md mb-4">
+                        <source src="{{url_for('static', filename='dist/videos/huddle.mp4')}}" type="video/mp4">
+                    </video>
+                    <h3 class="text-xl font-semibold text-blue-500 dark:text-sky-500 text-center">Meeting AI (Huddle)
+                    </h3>
+                    <p class="text-gray-700 dark:text-gray-300 mt-2">AI-driven meeting assistant for capturing notes,
+                        action items, and summaries.</p>
+                </div>
+
+                <!-- Business Observability (Hawkeye) -->
+                <div
+                    class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-md hover:shadow-lg transition h-full flex flex-col justify-between">
+                    <video controls poster="https://via.placeholder.com/300x200?text=Hawkeye+Preview"
+                        class="w-full h-40 rounded-md mb-4">
+                        <source src="{{url_for('static', filename='dist/videos/hawkeye.mp4')}}" type="video/mp4">
+                    </video>
+                    <h3 class="text-xl font-semibold text-blue-500 dark:text-sky-500 text-center">Business Observability
+                        (Hawkeye)</h3>
+                    <p class="text-gray-700 dark:text-gray-300 mt-2">Real-time observability tool for monitoring key
+                        business metrics and insights.</p>
+                </div>
+
+                <!-- Accessibility Assistant (FiveO) -->
+                <div
+                    class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-md hover:shadow-lg transition h-full flex flex-col justify-between">
+                    <video controls poster="https://via.placeholder.com/300x200?text=FiveO+Preview"
+                        class="w-full h-40 rounded-md mb-4">
+                        <source src="{{url_for('static', filename='dist/videos/fiveo.mp4')}}" type="video/mp4">
+                    </video>
+                    <h3 class="text-xl font-semibold text-blue-500 dark:text-sky-500 text-center">Accessibility
+                        Assistant (FiveO)</h3>
+                    <p class="text-gray-700 dark:text-gray-300 mt-2">Enhancing digital accessibility standards for
+                        compliance and ease of use.</p>
+                </div>
+
+                <!-- Coding Copilot (Kettle) -->
+                <div
+                    class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-md hover:shadow-lg transition h-full flex flex-col justify-between">
+                    <video controls poster="https://via.placeholder.com/300x200?text=Kettle+Preview"
+                        class="w-full h-40 rounded-md mb-4">
+                        <source src="{{url_for('static', filename='dist/videos/kettle.mp4')}}" type="video/mp4">
+                    </video>
+                    <h3 class="text-xl font-semibold text-blue-500 dark:text-sky-500 text-center">Coding Copilot
+                        (Kettle)</h3>
+                    <p class="text-gray-700 dark:text-gray-300 mt-2">AI-powered coding assistant to speed up development
+                        and improve code quality.</p>
+                </div>
+
+                <!-- Cloud Migration Toolkit (Falcon) -->
+                <div
+                    class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-md hover:shadow-lg transition h-full flex flex-col justify-between">
+                    <video controls poster="https://via.placeholder.com/300x200?text=Falcon+Preview"
+                        class="w-full h-40 rounded-md mb-4">
+                        <source src="{{url_for('static', filename='dist/videos/falcon.mp4')}}" type="video/mp4">
+                    </video>
+                    <h3 class="text-xl font-semibold text-blue-500 dark:text-sky-500 text-center">Cloud Migration
+                        Toolkit (Falcon)</h3>
+                    <p class="text-gray-700 dark:text-gray-300 mt-2">Toolset designed for smooth and efficient cloud
+                        migration processes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-200 dark:bg-gray-900 dark:text-gray-100">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-5xl font-extrabold text-gray-900 dark:text-white py-4 mb-8">Our <span
+                    class="text-blue-500">Team</span></h2>
+            <div class="max-w-7xl mx-auto grid gap-8 lg:grid-cols-2 md:grid-cols-2 items-start">
+                <!-- Team Introduction Text -->
+                <div class="text-left">
+                    <p class="mt-4 text-xl text-gray-600 dark:text-gray-300">
+                        We are 10 experienced U.S. professionals with over 150 years of collective expertise spanning
+                        academia, corporate, research, and government sectors. As an employee-owned small business, we
+                        value diversity and operate exclusively onshore to deliver secure, high-quality, and innovative
+                        solutions for the American enterprise. Our team includes 4 PhDs and 6 Masters
+                        graduates with extensive
+                        entrepreneurial experience in pioneering innovative technologies.
+                    </p>
+                </div>
+                <!-- Company Callouts Section -->
+                <div
+                    class="hidden xs:hidden sm:block bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition flex flex-col items-center text-center">
+                    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 text-center items-center">
+                        <p class="text-xl font-semibold text-gray-400">Microsoft</p>
+                        <p class="text-xl font-semibold text-gray-400">Google</p>
+                        <p class="text-xl font-semibold text-gray-400">Intel</p>
+                        <p class="text-xl font-semibold text-gray-400">HPE</p>
+                        <p class="text-xl font-semibold text-gray-400">Amex</p>
+                        <p class="text-xl font-semibold text-gray-400">Raytheon</p>
+                        <p class="text-xl font-semibold text-gray-400">Salesforce</p>
+                        <p class="text-xl font-semibold text-gray-400">Databricks</p>
+                        <p class="text-xl font-semibold text-gray-400">GM</p>
+                        <p class="text-xl font-semibold text-gray-400">MIT</p>
+                        <p class="text-xl font-semibold text-gray-400">Caterpillar</p>
+                        <p class="text-xl font-semibold text-gray-400">WPAFB</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Highlights Section -->
+            <div class="mt-20 grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+                <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-lg shadow-md dark:shadow-lg">
+                    <h4 class="text-2xl font-bold text-blue-500 text-center">200+ Publications</h4>
+                    <p class="mt-3 text-gray-700 dark:text-gray-300">
+                        Our team has authored over 200 research publications, contributing to foundational knowledge in
+                        AI, data science, and advanced technology.
+                    </p>
+                </div>
+                <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-lg shadow-md dark:shadow-lg">
+                    <h4 class="text-2xl font-bold text-blue-500 text-center">20 Patents</h4>
+                    <p class="mt-3 text-gray-700 dark:text-gray-300">
+                        We hold 20 patents across diverse fields, underscoring our commitment to innovation and
+                        practical solutions.
+                    </p>
+                </div>
+                <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-lg shadow-md dark:shadow-lg">
+                    <h4 class="text-2xl font-bold text-blue-500 text-center">$200M+ Research</h4>
+                    <p class="mt-3 text-gray-700 dark:text-gray-300">
+                        With over $200M in funded projects, our work is backed by significant support from top
+                        institutions and agencies.
+                    </p>
+                </div>
+                <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-lg shadow-md dark:shadow-lg">
+                    <h4 class="text-2xl font-bold text-blue-500 text-center">$1B Revenue</h4>
+                    <p class="mt-3 text-gray-700 dark:text-gray-300">
+                        Our solutions have generated over $1 billion in revenues and cost savings for U.S. enterprises.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Engagement Section -->
+    <section id="engage" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-100 dark:bg-gray-900 dark:text-gray-100">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-5xl font-extrabold text-gray-900 dark:text-white text-left">
+                <span class="text-light">Engaging</span> <span class="text-blue-500">Z3NAI</span>
+            </h2>
+            <div class="grid grid-cols-1 lg:grid-cols-12 items-start justify-between gap-8 mb-12 mt-12">
+                <p
+                    class="mt-4 text-lg text-left text-gray-600 dark:text-gray-300 lg:col-span-9 md:col-span-9 sm:col-span-12">
+                    Flexible engagement models for every business need.
+                </p>
+            </div>
+            <div class="max-w-4xl mx-auto px-4 py-16">
+                <!-- Top Row of Cards with Three Pathways -->
+                <div class="flex justify-center space-x-4">
+                    <!-- Solution Integration Specialists -->
+                    <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg w-1/3 text-center">
+                        <h3 class="text-xl font-semibold text-light text-blue-500 text-center">Solution Integration
+                            Specialists</h3>
+                        <hr class="my-3 border-dashed border-gray-500 dark:border-light">
+                        <p class="text-gray-700 dark:text-gray-300 mt-2">For established enterprises</p>
+                    </div>
+
+                    <!-- Turn-Key Integrated Service Delivery -->
+                    <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg w-1/3 text-center">
+                        <h3 class="text-xl font-semibold text-light text-blue-500 text-center">Turn-Key Integrated
+                            Service Delivery</h3>
+                        <hr class="my-3 border-dashed border-gray-500 dark:border-light">
+                        <p class="text-gray-700 dark:text-gray-300 mt-2">For SMB businesses</p>
+                    </div>
+
+                    <!-- B2C Products and Services -->
+                    <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg w-1/3 text-center">
+                        <h3 class="text-xl font-semibold text-light text-blue-500 text-center">B2C Products and Services
+                        </h3>
+                        <hr class="my-3 border-dashed border-gray-500 dark:border-light">
+                        <p class="text-gray-700 dark:text-gray-300 mt-2">For the consumer market</p>
+                    </div>
+                </div>
+
+                <!-- Arrow Connectors -->
+                <div class="flex justify-center space-x-4 mt-2">
+                    <div class="w-1/3 flex justify-center">
+                        <span class="text-gray-400 dark:text-gray-500 text-6xl">&#x2193;</span>
+                    </div>
+                    <div class="w-1/3 flex justify-center">
+                        <span class="text-gray-400 dark:text-gray-500 text-6xl">&#x2193;</span>
+                    </div>
+                    <div class="w-1/3 flex justify-center">
+                        <span class="text-gray-400 dark:text-gray-500 text-6xl">&#x2193;</span>
+                    </div>
+                </div>
+
+                <!-- Enterprise Opportunity Card -->
+                <div class="flex justify-center mt-4 lg:px-32 md:px-16 sm:px-8 xs:px-2">
+                    <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-xl w-full text-center">
+                        <h3 class="text-2xl font-semibold text-blue-500 dark:text-sky-500">Flexible Engagement Model
+                        </h3>
+                        <hr class="my-3 border-dashed border-gray-500 dark:border-blue-600">
+                        <p class="text-gray-700 dark:text-gray-300 mt-2">We offer flexible engagement models to suit the
+                            needs of established enterprises, SMB businesses, and the consumer market. Connect with us
+                            to explore how we can collaborate to achieve secure, innovative, and impactful solutions for
+                            your business objectives.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Contact Section -->
+    <section id="contact" class="bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-white py-16 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto text-center">
+            <h2 class="text-5xl font-extrabold text-left text-gray-900 dark:text-white mb-8">
+                <span class="text-blue-500">Contact</span> Us
+            </h2>
+            <div class="grid grid-cols-1 lg:grid-cols-12 items-start justify-between gap-8 mb-12">
+                <p
+                    class="mt-4 text-lg text-left text-gray-600 dark:text-gray-300 lg:col-span-9 md:col-span-9 sm:col-span-12">
+                    Ready to make a difference? Let’s connect and discuss your project needs.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 text-left max-w-6xl mx-auto">
+                <!-- Map Card -->
+                <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6 flex flex-col items-center">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3075.1490340306955!2d-84.09852382428409!3d39.578791406213!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x884092041d31b999%3A0x4cc86227ce11037d!2s3937%20Haines%20Rd%2C%20Waynesville%2C%20OH%2045068!5e0!3m2!1sen!2sus!4v1741067615595!5m2!1sen!2sus"
+                        width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+
+                <!-- Contact Info Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Address Card -->
+                    <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6">
+                        <div class="flex items-start">
+                            <i class="fa-solid fa-map-marker-alt text-blue-500 text-2xl mr-4"></i>
+                            <div>
+                                <h4 class="text-xl font-semibold text-gray-700 dark:text-gray-300">Address</h4>
+                                <hr class="my-3 border-dashed border-gray-500 dark:border-blue-600">
+                                <p class="text-gray-600 dark:text-gray-400">3937 Haines Road<br>Waynesville, OH 45068
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Phone Card -->
+                    <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6">
+                        <div class="flex items-start">
+                            <i class="fa-solid fa-phone text-blue-500 text-2xl mr-4"></i>
+                            <div>
+                                <h4 class="text-xl font-semibold text-gray-700 dark:text-gray-300">Phone</h4>
+                                <hr class="my-3 border-dashed border-gray-500 dark:border-blue-600">
+                                <p class="text-gray-600 dark:text-gray-400">
+                                    <a href="tel:+15125551234" class="text-blue-500 hover:underline">+1 (512)
+                                        555-1234</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Email Card -->
+                    <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6">
+                        <div class="flex items-start">
+                            <i class="fa-solid fa-envelope text-blue-500 text-2xl mr-4"></i>
+                            <div>
+                                <h4 class="text-xl font-semibold text-gray-700 dark:text-gray-300">Email</h4>
+                                <hr class="my-3 border-dashed border-gray-500 dark:border-blue-600">
+                                <p class="text-gray-600 dark:text-gray-400">
+                                    <span>info</span><span>@</span><span>z3nai</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Website Card -->
+                    <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6">
+                        <div class="flex items-start">
+                            <i class="fa-solid fa-globe text-blue-500 text-2xl mr-4"></i>
+                            <div>
+                                <h4 class="text-xl font-semibold text-gray-700 dark:text-gray-300">Website</h4>
+                                <hr class="my-3 border-dashed border-gray-500 dark:border-blue-600">
+                                <p class="text-gray-600 dark:text-gray-400">
+                                    <a href="/" class="text-blue-500 hover:underline">http://z3nai.com</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Jobs Section -->
+    <section id="jobs" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-900 dark:text-gray-100">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-5xl font-extrabold text-gray-900 dark:text-white text-left mb-8">
+                Join Our <span class="text-blue-500">Team</span>
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-12">
+                <!-- Solution Architect Card -->
+                <div
+                    class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md dark:shadow-lg hover:shadow-xl transition border border-gray-200 dark:border-gray-600">
+                    <h3 class="text-2xl font-semibold text-blue-500 text-center">Solution Architect</h3>
+                    <hr class="my-3 border-dashed border-gray-500">
+                    <p class="text-gray-700 dark:text-gray-200">Design and implement complex cloud transformation
+                        solutions for our clients.
+                        Collaborate with cross-functional teams to deliver high-quality projects.</p>
+                    <p class="mt-4 text-gray-700 dark:text-gray-200"><strong>Location:</strong> Remote (US, DC
+                        Preferred)</p>
+                </div>
+
+                <!-- Technical Program Manager Card -->
+                <div
+                    class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md dark:shadow-lg hover:shadow-xl transition border border-gray-200 dark:border-gray-600">
+                    <h3 class="text-2xl font-semibold text-blue-500 text-center">Technical Program Manager</h3>
+                    <hr class="my-3 border-dashed border-gray-500">
+                    <p class="text-gray-700 dark:text-gray-200">Lead and manage technical projects from inception to
+                        completion. Ensure timely discovery, delivery and alignment with business goals.</p>
+                    <p class="mt-4 text-gray-700 dark:text-gray-200"><strong>Location:</strong> Remote (US, DC
+                        Preferred)</p>
+                </div>
+
+                <!-- Data Scientist Card -->
+                <div
+                    class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md dark:shadow-lg hover:shadow-xl transition border border-gray-200 dark:border-gray-600">
+                    <h3 class="text-2xl font-semibold text-blue-500 text-center">Data Scientist</h3>
+                    <hr class="my-3 border-dashed border-gray-500">
+                    <p class="text-gray-700 dark:text-gray-200">Analyze and interpret complex data to provide actionable
+                        insights. Develop predictive models and activate data-driven solutions.</p>
+                    <p class="mt-4 text-gray-700 dark:text-gray-200"><strong>Location:</strong> Remote (US, DC
+                        Preferred)</p>
+                </div>
+
+                <!-- DevSecOps Engineer Card -->
+                <div
+                    class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md dark:shadow-lg hover:shadow-xl transition border border-gray-200 dark:border-gray-600">
+                    <h3 class="text-2xl font-semibold text-blue-500 text-center">DevSecOps Engineer</h3>
+                    <hr class="my-3 border-dashed border-gray-500">
+                    <p class="text-gray-700 dark:text-gray-200">Integrate security practices into the release pipeline.
+                        Ensure the security and compliance of our infrastructure and applications.</p>
+                    <p class="mt-4 text-gray-700 dark:text-gray-200"><strong>Location:</strong> Remote (US, DC
+                        Preferred)</p>
+                </div>
+
+                <!-- AI Engineer Card -->
+                <div
+                    class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md dark:shadow-lg hover:shadow-xl transition border border-gray-200 dark:border-gray-600">
+                    <h3 class="text-2xl font-semibold text-blue-500 text-center">AI Engineer</h3>
+                    <hr class="my-3 border-dashed border-gray-500">
+                    <p class="text-gray-700 dark:text-gray-200">Develop and scale AI models and solutions. Work on
+                        cutting-edge AI technologies to solve real-world problems.</p>
+                    <p class="mt-4 text-gray-700 dark:text-gray-200"><strong>Location:</strong> Remote (US, DC
+                        Preferred)</p>
+                </div>
+
+                <!-- Search Specialist Card -->
+                <div
+                    class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md dark:shadow-lg hover:shadow-xl transition border border-gray-200 dark:border-gray-600">
+                    <h3 class="text-2xl font-semibold text-blue-500 text-center">Search Specialist</h3>
+                    <hr class="my-3 border-dashed border-gray-500">
+                    <p class="text-gray-700 dark:text-gray-200">Optimize and manage search solutions for our clients.
+                        Enhance search relevance using advanced semantic techniques.</p>
+                    <p class="mt-4 text-gray-700 dark:text-gray-200"><strong>Location:</strong> Remote (US, DC
+                        Preferred)</p>
+                </div>
+            </div>
+            <div class="mt-8 text-center">
+                <p class="text-lg text-gray-700 dark:text-gray-300">Ninjas, please email your
+                    portfolio/resume to <a href="mailto:careers@z3nai.com"
+                        class="text-blue-500 hover:underline">careers@z3nai.com</a>.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-300 py-2">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="mt-0 flex justify-center space-x-4 mb-2">
+                <button onclick="toggleModal()" class="hover:text-gray-100 text-sm focus:outline-none">Privacy
+                    Policy</button>
+                <span class="text-gray-300">|</span>
+                <a href="#" class="text-gray-300 hover:text-gray-100"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-gray-300 hover:text-gray-100"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="text-gray-300 hover:text-gray-100"><i class="fab fa-github"></i></a>
+                <span class="text-gray-300">|</span>
+                <span class="text-sm hover:text-gray-100">&copy; 2025 z3nai.com - all rights reserved.</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Privacy Policy Modal -->
+    <div id="privacyModal" class="fixed inset-0 z-50 hidden overflow-y-auto">
+        <div class="flex items-center justify-center min-h-screen px-4 text-center">
+            <div
+                class="relative bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 max-w-2xl mx-auto p-6 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Privacy Policy</h2>
+                <div class="overflow-y-auto max-h-96 text-left dark:text-white">
+                    <p class="text-sm text-gray-700 dark:text-gray-200">
+                        This is our Privacy Policy. It describes how we collect, use, and handle your information when
+                        you use our services.
+                        We value your privacy and are committed to protecting your personal data. By using our website,
+                        you agree to our terms.
+                    </p>
+                    <p class="text-sm text-gray-700 dark:text-gray-200 mt-4">
+                        1. Information Collection: We collect information you provide us directly, such as when you
+                        create an account or request support.
+                        <br><br>
+                        2. Information Use: Your data helps us improve our services, respond to customer service
+                        requests, and support security efforts.
+                        <br><br>
+                        3. Sharing and Disclosure: We do not share your personal data with third parties except as
+                        necessary for our services or as required by law.
+                        <br><br>
+                        For more details, please feel free to contact us at <span class="text-blue-500"><a
+                                href="mailto:info@z3nai.com"
+                                class="text-blue-500 hover:underline">info@z3nai.com</a></span>.
+                    </p>
+                </div>
+                <button onclick="toggleModal()"
+                    class="mt-6 bg-blue-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-600">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleModal() {
+            const modal = document.getElementById('privacyModal');
+            const body = document.body;
+            modal.classList.toggle('hidden');
+            body.classList.toggle('modal-open');
+        }
+    </script>
+
+    <style>
+        .modal-open {
+            overflow: hidden;
+        }
+
+        .modal-open::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.75);
+            z-index: 40;
+        }
+    </style>
+</body>
+
+</html>
