@@ -1,4 +1,8 @@
-node_modules/
+node_modules/*
+static/dist/css/.DS_Store
+static/dist/js/.DS_Store
+static/dist/fonts/.DS_Store
+static/dist/images/.DS_Store
 static/dist/videos/.DS_Store
 static/.DS_Store
 static/dist/.DS_Store
